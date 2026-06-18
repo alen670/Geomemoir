@@ -1,0 +1,6 @@
+{
+  "name": "个人数字足迹地图日记",
+  "description": "个人数字足迹地图日记，记录每日生活足迹、心情和天气，利用多媒体和交互式时间轴还原最温暖的私人记忆。",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

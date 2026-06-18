@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+/* Travel Journal Style Palette Design Tokens */
+:root {
+  --color-bg-page: #F7F3EA;
+  --color-bg-card: rgba(255, 255, 255, 0.86);
+  --color-bg-soft: #EFE9DE;
+  --color-text-primary: #18212F;
+  --color-text-secondary: #6F6A63;
+  --color-text-muted: #9A948C;
+  --color-brand-primary: #2F5D62;
+  --color-brand-secondary: #8B6F47;
+  --color-brand-accent: #C9824A;
+  --color-button-primary-start: #223E4C;
+  --color-button-primary-end: #4F7D82;
+  --color-button-primary-text: #FFF9EF;
+  --color-border-soft: rgba(80, 70, 55, 0.10);
+  --shadow-card: 0 12px 32px rgba(40, 35, 28, 0.08);
+  --shadow-floating: 0 16px 40px rgba(35, 55, 65, 0.22);
+
+  --font-ui: "MiSans", "HarmonyOS Sans SC", "PingFang SC", "Noto Sans SC", "Fredoka", "Microsoft YaHei", sans-serif;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  --font-hand: "LXGW WenKai", "霞鹜文楷", "Kaiti SC", cursive;
+}
+
+.dark {
+  --color-bg-page: #151A1E;
+  --color-bg-card: rgba(25, 30, 35, 0.86);
+  --color-bg-soft: #1C2329;
+  --color-text-primary: #FFF9EF;
+  --color-text-secondary: #AAA49C;
+  --color-text-muted: #7A746C;
+  --color-brand-primary: #4F7D82;
+  --color-brand-secondary: #A0835B;
+  --color-brand-accent: #D29463;
+  --color-button-primary-start: #2F5D62;
+  --color-button-primary-end: #6F8D92;
+  --color-button-primary-text: #FFF9EF;
+  --color-border-soft: rgba(255, 245, 230, 0.08);
+  --shadow-card: 0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-floating: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+@theme {
+  --font-sans: var(--font-ui);
+  --font-ui: var(--font-ui);
+  --font-serif: var(--font-serif);
+  --font-hand: var(--font-hand);
+  
+  --color-bg-page: var(--color-bg-page);
+  --color-bg-card: var(--color-bg-card);
+  --color-bg-soft: var(--color-bg-soft);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-brand-primary: var(--color-brand-primary);
+  --color-brand-secondary: var(--color-brand-secondary);
+  --color-brand-accent: var(--color-brand-accent);
+}
+
+body {
+  font-family: var(--font-ui);
+}
+
+.page-title {
+  font-family: var(--font-ui);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.memory-title {
+  font-family: var(--font-ui);
+  font-weight: 750;
+}
+
+.memory-description,
+.memory-content {
+  font-family: var(--font-serif);
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  color: var(--color-text-secondary);
+}
+
+.memory-hand {
+  font-family: var(--font-hand);
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+/* Low-Saturation Custom Travel components classes */
+.primary-button {
+  background: linear-gradient(135deg, var(--color-button-primary-start), var(--color-button-primary-end));
+  color: var(--color-button-primary-text);
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow:
+    0 12px 28px rgba(34, 62, 76, 0.24),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+  border-radius: 999px;
+  font-weight: 700;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.primary-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+.primary-button:active {
+  transform: translateY(1px);
+  filter: brightness(0.95);
+}
+
+.secondary-chip {
+  background: rgba(255, 255, 255, 0.68);
+  color: #5F513F;
+  border: 1px solid rgba(139, 111, 71, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+  cursor: pointer;
+}
+.dark .secondary-chip {
+  background: rgba(40, 48, 56, 0.68);
+  color: #EFE3D0;
+  border: 1px solid rgba(223, 195, 155, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.secondary-chip.active {
+  background: #EFE3D0;
+  color: #4B3621;
+  border-color: rgba(139, 94, 60, 0.25);
+}
+.dark .secondary-chip.active {
+  background: #2F5D62;
+  color: #FFF9EF;
+  border-color: rgba(79, 125, 130, 0.40);
+}
+
+.floating-action-button {
+  background: rgba(255, 252, 246, 0.88);
+  color: #243B3D;
+  border: 1px solid rgba(47, 93, 98, 0.12);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 8px 24px rgba(24, 33, 47, 0.10);
+  border-radius: 999px;
+  font-weight: 700;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .floating-action-button {
+  background: rgba(30, 38, 43, 0.88);
+  color: #FFF9EF;
+  border: 1px solid rgba(79, 125, 130, 0.20);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.floating-action-button:hover {
+  transform: translateY(-1.5px);
+  background: rgba(255, 252, 246, 0.96);
+  box-shadow: 0 10px 28px rgba(24, 33, 47, 0.14);
+}
+
+.dark .floating-action-button:hover {
+  background: rgba(30, 38, 43, 0.96);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.floating-action-button:active {
+  transform: translateY(0.5px);
+}
+
+/* iOS Dynamic Root & Body Canvas Styles mapped directly to Travel Journal */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--color-bg-page) !important;
+  color: var(--color-text-primary);
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Explicit Dark Mode Overrides */
+html.dark, body.dark, #root.dark {
+  background-color: var(--color-bg-page) !important;
+  color: var(--color-text-primary);
+}
+
+/* Leaflet Popup & Tooltip Styles Overwrite */
+.leaflet-popup-content-wrapper {
+  background: var(--color-bg-card) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(139, 111, 71, 0.15) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-card) !important;
+  padding: 4px !important;
+  color: var(--color-text-primary) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--color-bg-card) !important;
+  border: 1px solid rgba(139, 111, 71, 0.15) !important;
+}
+
+.leaflet-popup-tip-container {
+  display: block !important;
+}
+
+.leaflet-popup-content {
+  margin: 10px 12px !important;
+  font-family: inherit !important;
+  color: var(--color-text-primary) !important;
+}
+
+.leaflet-tooltip {
+  background: var(--color-bg-card) !important;
+  border: 1px solid rgba(139, 111, 71, 0.15) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(40, 35, 28, 0.08) !important;
+  color: var(--color-text-primary) !important;
+  font-family: inherit !important;
+  font-size: 11px !important;
+}
+
+/* Custom transitions and animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale {
+  animation: scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-bounceSlow {
+  animation: bounceSlow 2s ease-in-out infinite;
+}
+
+/* Scrollbar and custom utilities */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Ensure custom Leaflet div-icon container does not have default borders or backgrounds */
+.custom-map-marker-div {
+  background: transparent !important;
+  border: none !important;
+}
+
+.temp-marker-div {
+  background: transparent !important;
+  border: none !important;
+}
